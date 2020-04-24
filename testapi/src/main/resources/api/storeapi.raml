@@ -1,0 +1,160 @@
+#%RAML 1.0
+title: storeApi
+version: 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/f80dcde4-e232-48ac-9731-006eb52ca4ed/storeApi # baseUri: localhost:8081/storeApi
+traits:
+  walmart:
+    responses:
+      500:
+        body:
+          application/json:
+            example:
+              {"message":"server failer"}
+/Products:
+   description: walmart of available product
+   get: 
+     description: Api used to fetches all detail about product
+     responses:
+       200:
+         body:
+           application/json:
+                  example: {  }
+       404:
+         body:
+           application/json:
+             example:
+               {"NOT FOUND"}
+         
+   post:
+      description: Api used to create about product
+      queryParameters:
+        id: 
+         type: integer
+        name:
+          type: string
+        barcode:
+          type: string
+        productcatgory:
+          type: string
+
+      responses:
+        201:
+          body:
+            application/json:
+                example: {"create all product"}
+   /{productid}:
+     get:
+      description: Api used to fetches specifice product  by id
+      responses:
+        200:
+          body:
+           application/json:
+            example: {"reterive each product by id"}
+     put:
+       description: Api used to update specfice product by id
+       responses:
+        200:
+         body:
+            application/json:
+              example: {"update product by id"}
+     delete:
+        description: Api used to delete specfice product by id
+        responses:
+          200:
+           body:
+            application/json:
+              example: {"delete product by id"}
+     is:
+      [walmart]
+/Bill:
+    description: walmart of available bill
+    get: 
+     description: Api used to fetches all detail about bill
+     responses:
+       200:
+         body:
+           application/json:
+                  example: {"retrive all bill"} 
+       404:
+         body:
+           application/json:
+             example:
+               {"NOT FOUND"}
+    post:
+      description: Api used to create about product
+      responses:
+        201:
+          body:
+            application/json:
+                example: {"create all bill"}
+    /{billid}:
+     get:
+      description: Api used to fetches specifice bill  by id
+      responses:
+       200:
+        body:
+          application/json:
+            example: {"retrive bill by id"}
+     put:
+      description: Api used to update specfice bill by id
+      responses:
+       200:
+         body:
+            application/json:
+              example: {"update bill by id"}
+     delete:
+      description: Api used to delete specfic bill by id
+      responses:
+        200:
+          body:
+            application/json:
+              example: {"delete bill by id"}
+    is:
+     [walmart]
+
+/ProductCatagory:
+   description: walmart of available bill
+   get: 
+     description: Api used to fetches all detail about bill
+     responses:
+       200:
+         body:
+           application/json:
+                  example: {"reterive all productcatagory"}
+       404:
+         body:
+           application/json:
+             example:
+               {"NOT FOUND"}
+   post:
+      description: Api used to create about product
+      responses:
+        201:
+          body:
+            application/json:
+                example: {"product catagory been created"}
+   /{productCatagoryid}:
+    get:
+     description: Api used to fetches specifice product catagory by id
+     responses:
+      200:
+        body:
+          application/json:
+            example: {"reterive product catagory by id"}
+    put:
+     description: Api used to update specfice product catagory by id
+     responses:
+       200:
+         body:
+            application/json:
+              example: {"update product catagory by id"}
+    delete:
+     description: Api used to delete specfic product catagory by id
+     responses:
+        200:
+          body:
+            application/json:
+              example: {"delete product catagory by id"}
+   is:
+    [walmart]
+
